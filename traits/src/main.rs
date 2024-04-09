@@ -29,24 +29,46 @@ Define enum here
 // Problem 2: Fix the code below so that it compiles 
 
 
-struct Container<T> {
-    value: T,
+// struct Container<T> {
+//     value: T,
+// }
+
+// impl<T> Container<T> {
+//     fn create(value: T) -> Container<T> {       // something wrong here 
+//         Container { value }
+//     }
+// }
+
+// impl Container<i32> {
+//     fn display(&self) {
+//         println!("The value inside the container is: {}", self.value);
+//     }
+
+//     // fn create(value: i32) -> Container<i32> {
+//     //     Container { value }
+//     // }
+// }
+
+// fn main(){}
+
+// Problem 3: Generalize the function take_and_return() so that the it can accept any type.  
+
+struct User {
+    name: String,
+    id: u32,
 }
 
-impl<T> Container<T> {
-    fn create(value: T) -> Container<T> {       // something wrong here 
-        Container { value }
-    }
+fn take_and_return<T>(user: T) -> T { // this line needs updation
+    user
 }
 
-impl Container<i32> {
-    fn display(&self) {
-        println!("The value inside the container is: {}", self.value);
-    }
+fn main() {
+    let user1 = User {
+        name: "Alice".to_string(),
+        id: 199,
+    };
+    let _user2 = take_and_return(user1);
 
-    // fn create(value: i32) -> Container<i32> {
-    //     Container { value }
-    // }
+    let str1 = String::from("Hello folks");
+    let _str2 = take_and_return(str1); // we want this to compile
 }
-
-fn main(){}
