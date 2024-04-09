@@ -53,22 +53,54 @@ Define enum here
 
 // Problem 3: Generalize the function take_and_return() so that the it can accept any type.  
 
-struct User {
-    name: String,
-    id: u32,
-}
+// struct User {
+//     name: String,
+//     id: u32,
+// }
 
-fn take_and_return<T>(user: T) -> T { // this line needs updation
-    user
-}
+// fn take_and_return<T>(user: T) -> T { // this line needs updation
+//     user
+// }
 
+// fn main() {
+//     let user1 = User {
+//         name: "Alice".to_string(),
+//         id: 199,
+//     };
+//     let _user2 = take_and_return(user1);
+
+//     let str1 = String::from("Hello folks");
+//     let _str2 = take_and_return(str1); // we want this to compile
+// }
+
+// Problem 1: Fix the code so that it compiles. 
+
+trait Sound {
+    fn animal_sound(&self) -> String {
+        "I dont have sound!".to_string()
+    }
+}
+struct Dog;
+struct Cat;
+struct Fish;
+
+impl Sound for Dog {
+    fn animal_sound(&self) -> String {
+        "woof".to_string()
+    }
+}
+impl Sound for Cat {
+    fn animal_sound(&self) -> String {
+        "meow".to_string()
+    }
+}
+impl Sound for Fish {} // fish does not make any sound so we should not implement the 
+                       //fn animal_sound(). This will make compiler unhappy 
 fn main() {
-    let user1 = User {
-        name: "Alice".to_string(),
-        id: 199,
-    };
-    let _user2 = take_and_return(user1);
-
-    let str1 = String::from("Hello folks");
-    let _str2 = take_and_return(str1); // we want this to compile
+    let dog = Dog;
+    let cat = Cat;
+    let fish = Fish;
+    println!("Dog Sound: {}", dog.animal_sound());
+    println!("Cat Sound: {}", cat.animal_sound());
+    println!("Fish Sound: {}", fish.animal_sound());
 }
