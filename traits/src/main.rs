@@ -75,32 +75,87 @@ Define enum here
 
 // Problem 1: Fix the code so that it compiles. 
 
-trait Sound {
-    fn animal_sound(&self) -> String {
-        "I dont have sound!".to_string()
-    }
-}
-struct Dog;
-struct Cat;
-struct Fish;
+// trait Sound {
+//     fn animal_sound(&self) -> String {
+//         "I dont have sound!".to_string()
+//     }
+// }
+// struct Dog;
+// struct Cat;
+// struct Fish;
 
-impl Sound for Dog {
-    fn animal_sound(&self) -> String {
-        "woof".to_string()
+// impl Sound for Dog {
+//     fn animal_sound(&self) -> String {
+//         "woof".to_string()
+//     }
+// }
+// impl Sound for Cat {
+//     fn animal_sound(&self) -> String {
+//         "meow".to_string()
+//     }
+// }
+// impl Sound for Fish {} // fish does not make any sound so we should not implement the 
+//                        //fn animal_sound(). This will make compiler unhappy 
+// fn main() {
+//     let dog = Dog;
+//     let cat = Cat;
+//     let fish = Fish;
+//     println!("Dog Sound: {}", dog.animal_sound());
+//     println!("Cat Sound: {}", cat.animal_sound());
+//     println!("Fish Sound: {}", fish.animal_sound());
+// }
+
+
+// Problem 2: Fix the code by adding implementation for the Vehicle trait for the Bus and Bicycle types
+
+trait Vehicle {
+    fn speed(&self) -> f64 {
+        0.0
     }
 }
-impl Sound for Cat {
-    fn animal_sound(&self) -> String {
-        "meow".to_string()
+
+struct Car {
+    model: String,
+    speed: f64,
+}
+
+impl Vehicle for Car {
+    fn speed(&self) -> f64 {
+        self.speed
     }
 }
-impl Sound for Fish {} // fish does not make any sound so we should not implement the 
-                       //fn animal_sound(). This will make compiler unhappy 
+
+// Do not change the struct definitions
+struct Bicycle {
+    brand: String,
+}
+impl Vehicle for Bicycle {}
+
+struct Bus {
+    model: String,
+    speed: f64,
+}
+
+impl Vehicle for Bus {
+    fn speed(&self) -> f64 {
+        self.speed
+    }
+}
+
 fn main() {
-    let dog = Dog;
-    let cat = Cat;
-    let fish = Fish;
-    println!("Dog Sound: {}", dog.animal_sound());
-    println!("Cat Sound: {}", cat.animal_sound());
-    println!("Fish Sound: {}", fish.animal_sound());
+    let car = Car {
+        model: "Camry".to_string(),
+        speed: 120.0,
+    };
+    let bicycle = Bicycle {
+        brand: "MountainBike".to_string(),
+    };
+    let bus = Bus {
+        model: "BMC".to_string(),
+        speed: 100.0,
+    };
+
+    car.speed();
+    bicycle.speed();
+    bus.speed();
 }
