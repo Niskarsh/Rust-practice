@@ -37,34 +37,66 @@
 
 // Problem 2: Complete the into_iter function definition 
 
-struct Person {
-    name: String,
-    age: u32,
-    occupation: String,
+// struct Person {
+//     name: String,
+//     age: u32,
+//     occupation: String,
+// }
+
+// impl IntoIterator for Person {
+//     type Item = String;
+//     type IntoIter = std::vec::IntoIter<Self::Item>;
+
+//     fn into_iter(self) -> Self::IntoIter {
+//         /* Your code here 
+//         Hint: Should return a vector of Strings, 
+//         representing the fields of the struct  */
+//         vec![self.name, self.occupation].into_iter()
+//     }
+// }
+
+// fn main() {
+//     let person = Person {
+//         name: "Alice".to_string(),
+//         age: 30,
+//         occupation: "Software Engineer".to_string(),
+//     };
+
+//     let mut person_iterator = person.into_iter();
+
+//     while let Some(property) = person_iterator.next() {
+//         println!("{}", property);
+//     }
+// }
+
+// Problem 3: Complete the into_iter function definition. 
+// Also add the type for the associated type item
+
+struct Pixel {
+    r: i8,
+    g: i8,
+    b: i8,
 }
 
-impl IntoIterator for Person {
-    type Item = String;
+impl IntoIterator for Pixel {
+    type Item = i8; // this needs to be fixed 
     type IntoIter = std::vec::IntoIter<Self::Item>;
 
     fn into_iter(self) -> Self::IntoIter {
-        /* Your code here 
-        Hint: Should return a vector of Strings, 
-        representing the fields of the struct  */
-        vec![self.name, self.occupation].into_iter()
+        /* The function needs to be completed */ 
+        vec![self.r, self.g, self.b].into_iter()
     }
 }
 
 fn main() {
-    let person = Person {
-        name: "Alice".to_string(),
-        age: 30,
-        occupation: "Software Engineer".to_string(),
+    let p = Pixel {
+        r: 54,
+        g: 23,
+        b: 74,
     };
+    let p = p.into_iter();
 
-    let mut person_iterator = person.into_iter();
-
-    while let Some(property) = person_iterator.next() {
-        println!("{}", property);
+    for component in p {
+        println!("{}", component);
     }
 }
