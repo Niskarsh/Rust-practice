@@ -27,16 +27,31 @@
 
 // Problem 1: Fix the code by moving the indicated line to approperiate location
 
-fn identity(a: &i32) -> &i32 {
-    a
+// fn identity(a: &i32) -> &i32 {
+//     a
+// }
+
+// fn main() {
+//     let mut x_ref: Option<&i32> = None;
+//     {
+//         let x = 7;
+//         x_ref = Some(identity(&x));
+//         assert_eq!(*x_ref.unwrap(), 7); // Issue at this line
+//     }
+    
+// }
+
+//Problem 3: Fix the code by moving the indicated line to approperiate place 
+
+fn option(opt: Option<&i32>) -> &i32 {
+    opt.unwrap()
+}
+fn main() {
+    let y = 4; // move this line only 
+    let answer = { 
+        
+        option(Some(&y)) 
+    };
+    assert_eq!(answer, &4);
 }
 
-fn main() {
-    let mut x_ref: Option<&i32> = None;
-    {
-        let x = 7;
-        x_ref = Some(identity(&x));
-        assert_eq!(*x_ref.unwrap(), 7); // Issue at this line
-    }
-    
-}
