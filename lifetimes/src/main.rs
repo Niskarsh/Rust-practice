@@ -43,15 +43,30 @@
 
 //Problem 3: Fix the code by moving the indicated line to approperiate place 
 
-fn option(opt: Option<&i32>) -> &i32 {
-    opt.unwrap()
+// fn option(opt: Option<&i32>) -> &i32 {
+//     opt.unwrap()
+// }
+// fn main() {
+//     let y = 4; // move this line only 
+//     let answer = { 
+        
+//         option(Some(&y)) 
+//     };
+//     assert_eq!(answer, &4);
+// }
+
+// Problem 1: Add lifetime annotations in the function signature
+
+fn some_if_greater<'a, 'b>(number: &'a i32, greater_than: &'b i32) -> Option<&'a i32> {
+    if number > greater_than {
+        Some(number)
+    } else {
+        None
+    }
 }
 fn main() {
-    let y = 4; // move this line only 
-    let answer = { 
-        
-        option(Some(&y)) 
-    };
-    assert_eq!(answer, &4);
+    let num_1 = 7;
+    let greater_val = 4;
+    let test = some_if_greater(&num_1, &greater_val);
+    println!("{:?}", test);
 }
-
