@@ -79,29 +79,50 @@
 // Problem 1: Complete the code by bringing the required items into scope.
 
 
-mod seasons {
+// mod seasons {
 
-    pub enum Season {
-        Spring,
-        Summer,
-        Autumn,
-        Winter,
-    }
+//     pub enum Season {
+//         Spring,
+//         Summer,
+//         Autumn,
+//         Winter,
+//     }
 
-    pub fn is_holiday(season: &Season) -> bool {
-        match season {
-            Season::Summer => true,
-            _ => false,
-        }
-    }
-}
+//     pub fn is_holiday(season: &Season) -> bool {
+//         match season {
+//             Season::Summer => true,
+//             _ => false,
+//         }
+//     }
+// }
 
-fn main() {
-    let current_season = seasons::Season::Autumn;
-    if seasons::is_holiday(&current_season) {
-        println!("It's a holiday season! Time for a vacation!");
-    } else {
-        println!("Regular work season. Keep hustling!");
-    }
-}
+// fn main() {
+//     let current_season = seasons::Season::Autumn;
+//     if seasons::is_holiday(&current_season) {
+//         println!("It's a holiday season! Time for a vacation!");
+//     } else {
+//         println!("Regular work season. Keep hustling!");
+//     }
+// }
 
+//Problem #2: Fix the code below so that it compiles.
+
+
+// mod University {
+//     pub struct Student {
+//         pub name: String,
+//         pub marks: u8,
+//         pub grade: char,
+//     }
+// }
+
+// use University::Student;
+
+// fn main() {
+//     let mut student_1 = Student {
+//         name: String::from("Alice"),
+//         marks: 75,
+//         grade: 'A',
+//     };
+//     println!("{} got {} grade", student_1.name, student_1.grade);
+// }
