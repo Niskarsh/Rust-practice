@@ -2,6 +2,8 @@
 // The signature of the function is given in the code below.
 // This method will return the head value if it exist.
 
+use std::rc::Rc;
+
 #[derive(Debug)]
 struct Linklist {
     head: pointer,
@@ -40,6 +42,14 @@ impl Linklist {
 
     fn peek(&self) -> Option<i32> {
         /* Your code here */
+        let current_head = Rc::new(&(self.head));
+        match *current_head {
+            Some(previous_head)=> {
+                // self.head = previous_head.next;
+                Some(previous_head.element)
+            }
+            None => None,
+        }
     }
 
     fn print(&self) {
@@ -58,5 +68,6 @@ fn main() {
     list.add(15);
     list.add(20);
 
+    println!("{:?}", list.peek());
     println!("{:?}", list.peek());
 }
